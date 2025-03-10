@@ -1,0 +1,13 @@
+[workspace.package]
+authors = ["zdq@meitu.com"]
+license = ""
+edition = "2024"
+rust-version = "1.85.0"
+
+[workspace]
+members = ["crates/crab_lib", "crates/crab_cli"]
+resolver = "2"
+
+[workspace.dependencies]
+anyhow = { version = "1.0.97" }
+crab_lib = { path = "crates/crab_lib" }

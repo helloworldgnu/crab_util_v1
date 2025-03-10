@@ -1,0 +1,22 @@
+[package]
+name = "crab_cli"
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+edition.workspace = true
+version = "0.1.0"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "crab_cli"
+path = "src/main.rs"
+
+[dependencies]
+crab_lib.workspace = true
+clap = { version = "4.5.31", features = ["derive"] }
+md5 = { version = "0.7.0" }
+anyhow.workspace = true
+tokio = { version = "1.44.0", features = ["rt", "rt-multi-thread", "macros"] }
+enum_dispatch = { version = "0.3.13" }
