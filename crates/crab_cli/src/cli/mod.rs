@@ -1,19 +1,21 @@
-mod cmd_md5;
+pub mod cmd_md5;
 
-use crate::CmdExecutor;
 use enum_dispatch::enum_dispatch;
 
-#[derive(clap::Subcommand, Debug)]
-#[enum_dispatch(CommandExecutor)]
-pub enum SubCommand {
-    Md5(cmd_md5::Md5),
+pub use cmd_md5::*;
+
+#[derive(clap::Parser, Debug)]
+#[command(name = "Cli",version, author, about, long_about = None)]
+pub struct Cli {
+    #[clap(short, long)]
+    pub debug: bool,
+    #[command(subcommand)]
+    pub command: Option<SubCommand>,
 }
 
-impl CmdExecutor for SubCommand {
-    async fn execute(&self) -> anyhow::Result<()> {
-        match self {
-            SubCommand::Md5(cmd) => cmd.execute().await?,
-        }
-        Ok(())
-    }
+#[derive(clap::Parser, Debug)]
+#[enum_dispatch(CommandExecutor)]
+pub enum SubCommand {
+    #[command(name = "md5")]
+    Md5(cmd_md5::Md5),
 }

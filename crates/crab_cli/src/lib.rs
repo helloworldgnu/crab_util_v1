@@ -1,8 +1,9 @@
-use enum_dispatch::enum_dispatch;
-
 pub mod cli;
 
+pub use cli::*;
+use enum_dispatch::enum_dispatch;
+
 #[enum_dispatch]
-pub trait CmdExecutor {
+pub trait CommandExecutor {
     async fn execute(&self) -> anyhow::Result<()>;
 }

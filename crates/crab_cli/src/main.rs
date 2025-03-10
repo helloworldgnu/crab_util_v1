@@ -1,16 +1,9 @@
 extern crate clap;
 
-use clap::{CommandFactory, Parser};
-use crab_cli::CmdExecutor;
+extern crate enum_dispatch;
 
-#[derive(clap::Parser, Debug)]
-#[command(version, author, about, long_about = None)]
-struct Cli {
-    #[clap(short, long)]
-    debug: bool,
-    #[command(subcommand)]
-    command: Option<crab_cli::cli::SubCommand>,
-}
+use clap::{CommandFactory, Parser};
+use crab_cli::{Cli, CommandExecutor};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
