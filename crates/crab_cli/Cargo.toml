@@ -20,3 +20,8 @@ md5 = { version = "0.7.0" }
 anyhow.workspace = true
 tokio = { version = "1.44.0", features = ["rt", "rt-multi-thread", "macros"] }
 enum_dispatch = { version = "0.3.13" }
+tower-http = { version = "0.5.2", features = ["compression-full", "cors", "trace", "fs"] }
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+axum = { version = "0.7.9", features = ["http2", "query", "tracing"] }
+get_if_addrs = { version = "0.5.3" }
